@@ -6,13 +6,8 @@ using System.Threading.Tasks;
 
 namespace rpsls
 {
-    class Program
+    class AI : Player
     {
-        static void Main(string[] args)
-        {
-            Game game = new Game();
 
-            
-        }
     }
 }

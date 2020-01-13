@@ -22,19 +22,21 @@ namespace rpsls
 
         public void DoesPlayerNeedToSeeRules()
         {
-            string seeRules = Console.ReadLine();
-            switch (seeRules.ToLower())
+            string seeRules;
+            do
             {
-                case "y":
-                    DisplayTheRules();
-                    break;
-                case "n":
-                    Console.WriteLine("Great! You already know the rules!");
-                    break;
-                default:
-                    Console.WriteLine("Please enter y or n");
-                    break;
-            }     
+                Console.WriteLine("Please enter y or n");
+                seeRules = Console.ReadLine();
+            } while (seeRules != "y" && seeRules != "n") ;
+            if (seeRules == "y")
+            {
+                DisplayTheRules();
+            }
+            else
+            {
+                Console.WriteLine("Great! You already know the rules!");
+                Console.ReadLine();
+            }
         }
         public void DisplayTheRules()
         {
@@ -48,12 +50,33 @@ namespace rpsls
             Console.WriteLine("Scissors decapitates Lizard");
             Console.WriteLine("Lizard eats Paper");
             Console.WriteLine("Paper disproves Spock");
-            Console.WriteLine("Spock vaporizes Rock");                                 
+            Console.WriteLine("Spock vaporizes Rock");
+            Console.ReadLine();
         }
 
         public void NumberOfUsers()
         {
-            Console.WriteLine("How many players? (1 or 2)?");
+            
+            string numberUsers; //= Console.ReadLine();
+            do
+            {
+                Console.WriteLine("Please choose 1 or 2");
+                numberUsers = Console.ReadLine();
+            } while (numberUsers != "1" && numberUsers != "2");
+            if (numberUsers == "1")
+            {
+                Console.WriteLine("You've chosen single player game");
+                Console.ReadLine();
+            }
+            else
+            {
+                Console.WriteLine("You've chosen multiplayer game");
+                Console.ReadLine();
+            }
+        }
+
+        public void ChooseGesture()
+        {
 
         }
     }
