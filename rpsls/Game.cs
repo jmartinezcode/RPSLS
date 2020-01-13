@@ -8,11 +8,16 @@ namespace rpsls
 {
     class Game
     {
+        Human player1;
+        
         public Game()
         {
+            player1 = new Human();
             WelcomeToTheGame();
             DoesPlayerNeedToSeeRules();
             NumberOfUsers();
+            //player1.ChooseGesture();
+            //player2.ChooseGesture();
         }
         public void WelcomeToTheGame()
         {
@@ -60,25 +65,40 @@ namespace rpsls
             string numberUsers; //= Console.ReadLine();
             do
             {
-                Console.WriteLine("Please choose 1 or 2");
+                Console.WriteLine("Please choose 1 or 2 Users");
                 numberUsers = Console.ReadLine();
             } while (numberUsers != "1" && numberUsers != "2");
             if (numberUsers == "1")
             {
                 Console.WriteLine("You've chosen single player game");
+                AI player2 = new AI();
+                player1.ChooseGesture();
+                player2.ChooseGesture();
                 Console.ReadLine();
             }
             else
             {
                 Console.WriteLine("You've chosen multiplayer game");
+                Human player2 = new Human();
+                player1.ChooseGesture();
+                player2.ChooseGesture();
                 Console.ReadLine();
             }
         }
-
-        public void ChooseGesture()
+        public void DisplayScore()
         {
 
         }
+        public void CheckCurrectRound()
+        {
+
+        }
+        public void DeclareWinner()
+        {
+
+        }
+
+
     }
 
     

@@ -8,14 +8,14 @@ namespace rpsls
 {
     class Gesture
     {
-        string name;
+        public string name;
         public Gesture(string name)
         {
             this.name = name;
         }
         public void Paper()
         {
-
+             
         }
         public void Rock()
         {

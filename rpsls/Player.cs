@@ -6,15 +6,16 @@ using System.Threading.Tasks;
 
 namespace rpsls
 {
-    class Player
+    abstract class Player
     {
-        public List<Gesture> gestures;
+        public List<string> gestures;
         public Player()
         {
-            //gestures = new List<Gesture>() {"Rock", "Paper", "Scissors", "Lizard", "Spock"};
+            gestures = new List<string>() {"Rock", "Paper", "Scissors", "Lizard", "Spock"};
 
         }
 
+        public abstract void ChooseGesture();
 
     }
 }
