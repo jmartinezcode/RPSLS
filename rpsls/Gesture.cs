@@ -9,29 +9,12 @@ namespace rpsls
     class Gesture
     {
         public string name;
-        public Gesture(string name)
+        public List<string> losesTo;
+        public Gesture(string name, List<string> losesTo)
         {
             this.name = name;
+            this.losesTo = losesTo;
         }
-        public void Paper()
-        {
-             
-        }
-        public void Rock()
-        {
-
-        }
-        public void Scissors()
-        {
-
-        }
-        public void Lizard()
-        {
-
-        }
-        public void Spock()
-        {
-
-        }
+        
     }
 }
