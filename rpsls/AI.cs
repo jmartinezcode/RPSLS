@@ -11,7 +11,7 @@ namespace rpsls
         
         public AI()
         {
-            
+            SetName();
         }
         public override void ChooseGesture()
         {

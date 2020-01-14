@@ -10,7 +10,7 @@ namespace rpsls
     {
         public Human()
         {
-
+            SetName();
         }
         public override void ChooseGesture()
         {

@@ -66,16 +66,12 @@ namespace rpsls
                 Console.WriteLine("You've chosen single player game");
                 player1 = new Human();
                 player2 = new AI();
-                player1.SetName();
-                player2.SetName();
             }
             else
             {
                 Console.WriteLine("You've chosen multiplayer game");
                 player1 = new Human();
                 player2 = new Human();
-                player1.SetName();
-                player2.SetName();
             }
         }
         public void RunGame()
@@ -146,12 +142,6 @@ namespace rpsls
             {
                 Console.WriteLine("See you next time!");
             }
-        }
-
-
-
-
+        }                          
     }
-
-
 }
