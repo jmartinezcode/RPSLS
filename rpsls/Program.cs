@@ -10,11 +10,9 @@ namespace rpsls
     {
         static void Main(string[] args)
         {
-            //Game game = new Game();
-            //Console.ReadLine();
-            Console.WriteLine(3/2 + 1);
-            Console.WriteLine(5 / 2 +1);
+            Game game = new Game();
             Console.ReadLine();
+
 
             
         }

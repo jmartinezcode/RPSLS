@@ -10,9 +10,13 @@ namespace rpsls
     {
         Player player1;
         Player player2;
+        int numberOfRounds;
+        int winCondition;
         
         public Game()
         {
+            numberOfRounds = 3; //This should be an odd integer
+            winCondition = numberOfRounds / 2 + 1;
             WelcomeToTheGame();
             string userInput = ChooseNumberOfUsers();
             SetPlayers(userInput);
@@ -23,7 +27,7 @@ namespace rpsls
         {
             Console.WriteLine("Welcome to Rock, Paper, Scissors, Lizard, Spock");
             Console.WriteLine("");
-            Console.WriteLine("We're going to play best of 3");
+            Console.WriteLine("We're going to play best of {0}", numberOfRounds);
             Console.WriteLine("");
             DisplayTheRules();
         }
@@ -57,7 +61,7 @@ namespace rpsls
         }
         public void SetPlayers(string numberUsers)
         {
-            if (numberUsers == "1")
+            if (numberUsers == "1") 
             {
                 Console.WriteLine("You've chosen single player game");
                 player1 = new Human();
@@ -108,17 +112,19 @@ namespace rpsls
             do
             {
                 RunGame();
-            } while (player1.score != 2 && player2.score != 2);
+            } while (player1.score != winCondition && player2.score != winCondition);
         }
         public void DeclareWinner()
         {
-            if (player1.score == 2)
+            if (player1.score == winCondition)
             {
                 Console.WriteLine("{0} won! Great job", player1.name);
+                PlayAgainPrompt();
             }
-            else if (player2.score == 2)
+            else if (player2.score == winCondition)
             {
                 Console.WriteLine("{0} won!", player2.name);
+                PlayAgainPrompt();
             }
         }
         public void PlayAgainPrompt()
@@ -129,26 +135,20 @@ namespace rpsls
                 Console.WriteLine("Would you like to play again? (y or n)");
                 playAgain = Console.ReadLine();
             } while (playAgain != "y" && playAgain != "n");
+            if (playAgain == "y")
+            {
+                Console.WriteLine("Great! Let's play again!");
+                player1.score = player2.score = 0;
+                CheckCurrentRound();
+                DeclareWinner();
+            }
+            else
+            {
+                Console.WriteLine("See you next time!");
+            }
         }
 
-        //public void DoesPlayerNeedToSeeRules()
-        //{
-        //    string seeRules;
-        //    do
-        //    {
-        //        Console.WriteLine("Please enter y or n");
-        //        seeRules = Console.ReadLine();
-        //    } while (seeRules != "y" && seeRules != "n") ;
-        //    if (seeRules == "y")
-        //    {
-        //        DisplayTheRules();
-        //    }
-        //    else
-        //    {
-        //        Console.WriteLine("Great! You already know the rules!");
-        //        Console.ReadLine();
-        //    }
-        //}
+
 
 
     }
