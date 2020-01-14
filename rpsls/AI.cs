@@ -17,6 +17,7 @@ namespace rpsls
         {
             Random random = new Random();
             int aiChoice = random.Next(5);
+            choice = gestures[aiChoice];
             Console.WriteLine("The AI has chosen {0}", gestures[aiChoice].name);
             
         }

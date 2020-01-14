@@ -25,8 +25,8 @@ namespace rpsls
                 Console.WriteLine("Please choose a number between 1 and 5");
                 input = Console.ReadLine();
             } while (input != "1" && input != "2" && input != "3" && input != "4" && input != "5");
+            choice = gestures[Int32.Parse(input) - 1];
             Console.WriteLine("Player chose {0}", gestures[Int32.Parse(input)-1].name);
-            
         }
         public override void SetName()
         {

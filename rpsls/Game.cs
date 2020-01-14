@@ -17,10 +17,13 @@ namespace rpsls
             //DoesPlayerNeedToSeeRules();
             //ChooseNumberOfUsers();
             RunGame();
+
         }
         public void WelcomeToTheGame()
         {
             Console.WriteLine("Welcome to Rock, Paper, Scissors, Lizard, Spock");
+            Console.WriteLine("");
+            Console.WriteLine("We're going to play best of 3");
             Console.WriteLine("");
             //Console.WriteLine("Do you need to see the rules? (y/n)");
             DisplayTheRules();
@@ -40,7 +43,7 @@ namespace rpsls
             Console.WriteLine("Lizard eats Paper");
             Console.WriteLine("Paper disproves Spock");
             Console.WriteLine("Spock vaporizes Rock");
-            Console.WriteLine("");
+            //Console.WriteLine("");
             Console.ReadLine();
         }
 
@@ -82,6 +85,7 @@ namespace rpsls
             player1.ChooseGesture();
             player2.ChooseGesture();
             CompareGestures();
+            DisplayScore();
         }
         public void CompareGestures()
         {
@@ -92,15 +96,18 @@ namespace rpsls
             else if (player1.choice.losesTo.Contains(player2.choice.name))
             {
                 Console.WriteLine("{0} beats {1}! Player 1 loses", player2.choice.name, player1.choice.name);
+                player2.score++; 
             }
             else
             {
                 Console.WriteLine("{0} beats {1}! Player 2 loses", player1.choice.name, player2.choice.name);
+                player1.score++;
             }
         }
         public void DisplayScore()
         {
-
+            Console.WriteLine("The Score is {0} - {1}", player1.score, player2.score);
+            Console.ReadLine();
         }
         public void CheckCurrentRound()
         {
