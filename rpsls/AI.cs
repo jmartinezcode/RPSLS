@@ -18,13 +18,14 @@ namespace rpsls
             Random random = new Random();
             int aiChoice = random.Next(5);
             choice = gestures[aiChoice];
-            Console.WriteLine("The AI has chosen {0}", gestures[aiChoice].name);
+            Console.WriteLine("The AI has chosen {0}", choice.name);
             
         }
 
         public override void SetName()
         {
             // Set AI name
+            name = "The AI";
         }
     }
 }

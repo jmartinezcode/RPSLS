@@ -14,10 +14,10 @@ namespace rpsls
         public Game()
         {
             WelcomeToTheGame();
-            //DoesPlayerNeedToSeeRules();
-            //ChooseNumberOfUsers();
-            RunGame();
-
+            string userInput = ChooseNumberOfUsers();
+            SetPlayers(userInput);
+            CheckCurrentRound();
+            DeclareWinner();
         }
         public void WelcomeToTheGame()
         {
@@ -25,7 +25,6 @@ namespace rpsls
             Console.WriteLine("");
             Console.WriteLine("We're going to play best of 3");
             Console.WriteLine("");
-            //Console.WriteLine("Do you need to see the rules? (y/n)");
             DisplayTheRules();
         }
 
@@ -43,7 +42,6 @@ namespace rpsls
             Console.WriteLine("Lizard eats Paper");
             Console.WriteLine("Paper disproves Spock");
             Console.WriteLine("Spock vaporizes Rock");
-            //Console.WriteLine("");
             Console.ReadLine();
         }
 
@@ -64,24 +62,20 @@ namespace rpsls
                 Console.WriteLine("You've chosen single player game");
                 player1 = new Human();
                 player2 = new AI();
-                //player1.ChooseGesture();
-                //player2.ChooseGesture();
-                //Console.ReadLine();
+                player1.SetName();
+                player2.SetName();
             }
             else
             {
                 Console.WriteLine("You've chosen multiplayer game");
                 player1 = new Human();
                 player2 = new Human();
-                //player1.ChooseGesture();
-                //player2.ChooseGesture();
-                //Console.ReadLine();
+                player1.SetName();
+                player2.SetName();
             }
         }
         public void RunGame()
         {
-            string userInput = ChooseNumberOfUsers();
-            SetPlayers(userInput);
             player1.ChooseGesture();
             player2.ChooseGesture();
             CompareGestures();
@@ -89,18 +83,18 @@ namespace rpsls
         }
         public void CompareGestures()
         {
-            if (player1.choice == player2.choice)
+            if (player1.choice.name == player2.choice.name)
             {
                 Console.WriteLine("It's a tie!");
             }
             else if (player1.choice.losesTo.Contains(player2.choice.name))
             {
-                Console.WriteLine("{0} beats {1}! Player 1 loses", player2.choice.name, player1.choice.name);
+                Console.WriteLine("{0} beats {1}! {2} won this round!", player2.choice.name, player1.choice.name, player2.name);
                 player2.score++; 
             }
             else
             {
-                Console.WriteLine("{0} beats {1}! Player 2 loses", player1.choice.name, player2.choice.name);
+                Console.WriteLine("{0} beats {1}! {2} won this round!", player1.choice.name, player2.choice.name, player1.name);
                 player1.score++;
             }
         }
@@ -111,11 +105,30 @@ namespace rpsls
         }
         public void CheckCurrentRound()
         {
-
+            do
+            {
+                RunGame();
+            } while (player1.score != 2 && player2.score != 2);
         }
         public void DeclareWinner()
         {
-
+            if (player1.score == 2)
+            {
+                Console.WriteLine("{0} won! Great job", player1.name);
+            }
+            else if (player2.score == 2)
+            {
+                Console.WriteLine("{0} won!", player2.name);
+            }
+        }
+        public void PlayAgainPrompt()
+        {
+            string playAgain;
+            do
+            {
+                Console.WriteLine("Would you like to play again? (y or n)");
+                playAgain = Console.ReadLine();
+            } while (playAgain != "y" && playAgain != "n");
         }
 
         //public void DoesPlayerNeedToSeeRules()
