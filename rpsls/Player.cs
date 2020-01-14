@@ -22,5 +22,7 @@ namespace rpsls
 
         public abstract void ChooseGesture();
 
+        public abstract void SetName();
+
     }
 }
